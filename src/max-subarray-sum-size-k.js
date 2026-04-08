@@ -1,6 +1,26 @@
+// /**
+//  * solution 1 -- brute force
+//  * time: O(n * k)
+//  * space: O(k)
+//  *
+//  * @param {number[]} nums
+//  * @param {number} k
+//  * @returns {number} sum
+//  */
+// function maxSubarraySumSizeK(nums, k) {
+//     let maxSum = -Infinity;
+
+//     for (let i = 0; i <= nums.length - k; i++) {
+//         const kSliceSum = nums.slice(i, i + k).reduce((sum, curr) => sum + curr, 0);
+//         maxSum = Math.max(maxSum, kSliceSum);
+//     }
+
+//     return maxSum;
+// }
+
 /**
- * solution 1 -- brute force
- * time: O(n * k)
+ * solution 2 -- sliding window
+ * time: O(n - k)
  * space: O(k)
  *
  * @param {number[]} nums
@@ -8,12 +28,16 @@
  * @returns {number} sum
  */
 function maxSubarraySumSizeK(nums, k) {
-    let maxSum = -Infinity;
+    const kSliceSum = nums.slice(0, k).reduce((sum, curr) => sum + curr, 0);
+    let currentSum = kSliceSum;
+    let maxSum = kSliceSum;
 
-    for (let i = 0; i < nums.length - k; i++) {
-        const kSlice = nums.slice(i, i + k);
-        const kSliceSum = kSlice.reduce((sum, curr) => sum + curr, 0);
-        maxSum = Math.max(maxSum, kSliceSum);
+    for (let left = 1; left <= nums.length - k; left++) {
+        // sub old left value
+        currentSum -= nums[left - 1];
+        // add new right value
+        currentSum += nums[left + k - 1];
+        maxSum = Math.max(maxSum, currentSum);
     }
 
     return maxSum;
