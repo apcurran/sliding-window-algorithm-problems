@@ -1,0 +1,27 @@
+{
+    "name": "sliding-window",
+    "version": "1.0.0",
+    "description": "",
+    "homepage": "https://github.com/apcurran/sliding-window-algorithm-problems#readme",
+    "bugs": {
+        "url": "https://github.com/apcurran/sliding-window-algorithm-problems/issues"
+    },
+    "license": "ISC",
+    "author": "Alex Curran",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/apcurran/sliding-window-algorithm-problems.git"
+    },
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "lint": "oxlint",
+        "lint:fix": "oxlint --fix",
+        "fmt": "oxfmt",
+        "fmt:check": "oxfmt --check"
+    },
+    "devDependencies": {
+        "oxfmt": "^0.44.0",
+        "oxlint": "^1.59.0"
+    }
+}
