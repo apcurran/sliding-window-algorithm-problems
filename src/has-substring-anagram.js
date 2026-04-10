@@ -22,7 +22,6 @@ function hasSubstringAnagram(s, anagram) {
         windowSet.delete(s[i]);
         // add right value
         windowSet.add(s[i + k]);
-        // perform comparison
 
         if (windowSet.size === k && windowSet.isSubsetOf(anagramSet)) {
             return true;
